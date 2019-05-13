@@ -11,136 +11,15 @@
             <li class="active">全校成绩查询</li>
         </ol>
     </section>
-    <section>
-        <div class="modal fade" id="changeScore">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" name="changeForm"
-                                onsubmit="return(formValidation2());">&times;
-                        </button>
-                        <h4 class="modal-title">修改成绩</h4>
-                    </div>
-                    <div class="modal-body" id="addScoreModal">
-                        <form action="{% url 'scoreManagement:change_score' %}">
-                            <div class="form-horizontal">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <label for="changeYear" class="col-sm-2 control-label">学年：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeYear" class="form-control" name="year" readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="changeSemester" class="col-sm-2 control-label">学期：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeSemester" class="form-control" name="semester"
-                                               readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="changeSno" class="col-sm-2 control-label">学生学号：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeSno" class="form-control" name="Sno" readonly>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="changeCno" class="col-sm-2 control-label">课程号：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeCno" class="form-control" name="cno" readonly>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="changeMethod" class="col-sm-2 control-label">考核方式：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeMethod" class="form-control" name="method"
-                                               readonly>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="changeCommonScore" class="col-sm-2 control-label">平时成绩：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeCommonScore" class="form-control"
-                                               name="commonScore">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="changeFinalScore" class="col-sm-2 control-label">考试成绩：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="changeFinalScore" class="form-control" name="finalScore">
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="changeScore" class="col-sm-2 control-label">总分：</label>
-                                    <div class="col-sm-10">
-                                        <input type="text" id="zf" class="form-control" name="score">
-                                    </div>
-                                </div>
-
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <div class="center-block">
-                            <button id="cancelChange" type="button" class="btn btn-default" data-dismiss="modal">取消修改
-                            </button>
-                            <button id="sureToChange" type="button" class="btn btn-success">保存修改</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </section><!-- 修改成绩 -->
-
-    <section>
-        <div class="modal fade" id="deleteScore" role="dialog">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">确认删除成绩信息？</h4>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button id="sureToDelete" type="button" class="btn btn-danger">删除</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section><!-- 删除成绩 -->
-
 
     <section class="content">
         <div class="box">
             <div class="box-header">
                 <h3 class="box-title">全校课程成绩表</h3>
-                <div></div>
-                <pre style=" background:white;height: 10px; border: none ">    </pre>
-                &nbsp;&nbsp;&nbsp;&nbsp;<label class=" control-label">学年 &nbsp;</label><select id="year"
-                                                                                               style="width: 15%">
-                <option value="2016">2016</option>
-                <option value="2017">2017</option>
-                <option value="2018">2018</option>
-                <option value="2019">2019</option>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label class=" control-label">学期 &nbsp;</label><select id="semester" style="width: 15%">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label class=" control-label">专业 &nbsp;</label><select id="major" style="width: 15%">
-                <option value="a">a</option>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <label class=" control-label">班级 &nbsp;</label><select id="class" style="width: 15%">
-                <option value="ALL">全部</option>
-            </select>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <div class="btn-group pull-right ">
-
+                    <button id='add' class="btn btn-primary" type="button">
+                        <span class="glyphicon glyphicon-plus"></span>增加
+                    </button>
                     <button id='change' class="btn btn-info" type="button">
                         <span class="glyphicon glyphicon-pencil"></span>修改
                     </button>
@@ -149,13 +28,11 @@
                     </button>
                 </div>
             </div>
-
             <div class="box-body">
                 <table id="all_course_table" class="table table-bordered table-striped">
                     <thead>
                     <tr>
-                        <th>序号</th>
-                        <th style="display: none">编号</th>
+                        <th>编号</th>
                         <th>学年</th>
                         <th>学期</th>
                         <th>学生学号</th>
@@ -170,7 +47,6 @@
                     {% for course_score in all_course_score %}
                         <tr>
                             <td>{{ forloop.counter }}</td>
-                            <td style="display: none">{{ course_score.id }}</td>
                             <td>{{ course_score.teaching.mcno.year }}</td>
                             <td>{{ course_score.teaching.mcno.semester }}</td>
                             <td>{{ course_score.sno.username }}</td>
@@ -186,9 +62,37 @@
                         </tr>
                     {% endfor %}
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>编号</th>
+                        <th>学年</th>
+                        <th>学期</th>
+                        <th>学生学号</th>
+                        <th>课程号</th>
+                        <th>考核方式</th>
+                        <th>平时成绩</th>
+                        <th>考试成绩</th>
+                        <th>总分</th>
+                    </tr>
+                    </tfoot>
                 </table>
             </div>
-
+        </div>
+        <div class="box">
+            <div class="box-header">
+                <h3 class="box-title">教师总表</h3>
+                <div class="btn-group pull-right ">
+                    <button id='add' class="btn btn-primary" type="button">
+                        <span class="glyphicon glyphicon-plus"></span>增加
+                    </button>
+                    <button id='change' class="btn btn-info" type="button">
+                        <span class="glyphicon glyphicon-pencil"></span>修改
+                    </button>
+                    <button id='delete' class="btn btn-success" type="button">
+                        <span class="glyphicon glyphicon-remove"></span>删除
+                    </button>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -215,14 +119,8 @@
     <!-- page script -->
     <script>
 
-        $(function () {
-            const year = $('#year').val();
-            const semester = $('#semester').val();
-            const data = {
-                'year': year,
-                'semester': semester
-            };
 
+        $(function () {
 
 
             var table = $('#all_course_table').DataTable({
@@ -264,37 +162,6 @@
                 "order": [[0, 'asc']]
             });
 
-            $('#year').change(function () {
-                const year = $('#year').val();
-                const semester = $('#semester').val();
-                const data = {
-                    'year': year,
-                    'semester': semester
-                };
-                  $.ajax({
-                    url: '{% url "scoreManagement:adm_all_course_score" %}',
-                    type: 'GET',
-                    dataType: 'json',
-                    timeout: 5000,
-                    data: data,
-                    success: function (res) {
-                        console.log(res["all_course_score"]);
-                        let obj = JSON.parse(res["all_course_score"]);
-                        console.log(obj[1]['model']);
-                        console.log(typeof(obj[1]['fields']['teaching']));
-                        console.log(obj);
-                    },
-                    error: function (XMLHttpRequest, textStatus, errorThrown) {
-                        alert(XMLHttpRequest);
-                        alert(textStatus);
-                        alert(errorThrown);
-                    },
-                }
-            );
-
-            });
-
-
             $('#all_course_table tbody').on('click', 'tr', function (e) {
                 if ($(this).hasClass('selected')) {
                     $(this).removeClass('selected');
@@ -305,55 +172,36 @@
             });
 
             $('#add').click(function () {
-                $('#addScore').modal();
-
+                console.log("new car.");
+                $('#addCar').modal();
             });
 
             $('#change').click(function () {
                 console.log("change car");
                 if (table.rows('.selected').data().length) {
-                    $("#changeScore").modal();
+                    $("#changeCar").modal();
                     var rowData = table.rows('.selected').data()[0];
-
-                    var inputs = $('#changeScore').find('input');
+                    var inputs = $('#changeCar').find('input');
                     for (let i = 0; i < inputs.length; i++) {
-                        $(inputs[i]).val(rowData[i + 1]);
+                        $(inputs[i]).val(rowData[i]);
                     }
                 } else {
                     alert("请选择一个项目！");
                 }
             });
-            $('#sureToDelete').click(function () {
-                var rowData = table.rows('.selected').data()[0];
-                const id = rowData[1];
-                const data = {'id': id};
-                $.get('{% url "scoreManagement:delete_score" %}',
-                    data,
-                    function (rec, status) {
-                        if (status) {
-                            alert('删除成功');
-                            table.row('.selected').remove().draw(false);
-                        } else {
-                            alert('删除失败！');
-                        }
-                    }
-                );
-            });
 
             $('#delete').click(function () {
+                console.log("delete car");
                 if (table.rows('.selected').data().length) {
-                    $("#deleteScore").modal();
+                    $("#deleteCar").modal();
                     $('#sureToDelete').click(function () {
                         var rowData = table.rows('.selected').data()[0];
-                        const id = rowData[1];
-                        const x = $('#year').val()
-                        const data = {
-                            'id': id,
-                        };
-                        $.get('{% url "scoreManagement:delete_score" %}',
+                        const cno = rowData[1];
+                        const data = {'cno': cno};
+                        $.get('#',
                             data,
                             function (rec, status) {
-                                if (status) {
+                                if (status === 'success') {
                                     alert('删除成功');
                                     table.row('.selected').remove().draw(false);
                                 } else {
@@ -368,36 +216,56 @@
 
             });
 
-
             $('#sureToChange').click(function () {
                 var rowData = table.rows('.selected').data()[0];
-                const id = rowData[1]
-                const commonScore = $('#changeCommonScore').val();
-                const finalScore = $("#changeFinalScore").val();
-                const score = $("#zf").val();
+                const cnoOld = rowData[1];
+                const cno = $('#changeCarCNo').val();
+                const ctype = $("#changeCarType").val();
+                const coil = $("#changeCarOild").val();
+                const isava = $('#changeCarAva').val();
+                var isgood;
+                if (isava === '正常') {
+                    isgood = true;
+                } else {
+                    isgood = false;
+                }
                 const data = {
-                    'id': id,
-                    'commonScore': commonScore,
-                    'finalScore': finalScore,
-                    'score': score,
+                    'cnoOld': cnoOld,
+                    'cno': cno,
+                    'ctype': ctype,
+                    'coil': coil,
+                    'isgood': isgood
                 };
                 $.get(
-                    '{% url 'scoreManagement:change_score' %}',
+                    '#',
                     data,
                     function (rec) {
-                        var tds = Array.prototype.slice.call($('.selected td'));
-                        if (rec['status']) {
-                            tds[7].innerHTML = rec['newCommonScore'];
-                            tds[8].innerHTML = rec['newFinalScore'];
-                            tds[9].innerHTML = rec['newScore'];
-                            alert('修改成功');
+                        if (!rec) {
+                            alert('修改失败，车牌号重复');
                         } else {
-
-                            alert("修改失败");
+                            var tds = Array.prototype.slice.call($('.selected td'));
+                            const newcno = rec['newcno'];
+                            const newctype = rec['newctype'];
+                            const newoil = rec['newoil'];
+                            var avg;
+                            console.log(rec['ava']);
+                            console.log(typeof (rec['ava']));
+                            if (rec['ava']) {
+                                avg = '正常';
+                            } else {
+                                avg = '故障'
+                            }
+                            tds[1].innerHTML = newcno;
+                            tds[2].innerHTML = newctype;
+                            tds[3].innerHTML = newoil;
+                            tds[4].innerHTML = avg;
+                            alert("修改成功");
                         }
                     }
                 );
             });
         })
+
+
     </script>
 {% endblock %}
